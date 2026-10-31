@@ -190,7 +190,6 @@ struct SignInView: View {
                 .focused($focusedField, equals: .code)
                 .font(.system(size: 34, weight: .bold, design: .monospaced))
                 .multilineTextAlignment(.center)
-                .tracking(10)
                 .padding(.vertical, 14)
                 .background(Color.novaSurface)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -281,7 +280,7 @@ struct SignInView: View {
                 if let serverStatus {
                     Text(serverStatus)
                         .font(.caption)
-                        .foregroundStyle(serverStatus.hasPrefix("Saved") ? .green : .orange)
+                        .foregroundStyle(serverStatus.hasPrefix("Saved") ? Color.green : Color.orange)
                 }
 
                 Text("Current: \(ServerConfig.baseURL.absoluteString)")
@@ -290,7 +289,7 @@ struct SignInView: View {
                     .textSelection(.enabled)
 
                 if ServerConfig.isPlaceholder {
-                    Text("This build still points at the placeholder server. Deploy Backend/ and paste your Worker URL here, or set the API_BASE_URL build variable.")
+                    Text("This build still points at the placeholder server. Set the API_BASE_URL build variable, or paste a Worker URL here to run your own backend.")
                         .font(.caption2)
                         .foregroundStyle(.orange)
                 }

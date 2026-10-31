@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 extension Color {
     static let novaBackground = Color(red: 0.035, green: 0.035, blue: 0.045)
@@ -42,11 +43,12 @@ struct NovaLogo: View {
         HStack(spacing: 0) {
             Text("N")
                 .foregroundStyle(Color.novaRed)
+                .tracking(size * 0.06)
             Text("OVA")
                 .foregroundStyle(.white)
+                .tracking(size * 0.06)
         }
         .font(.system(size: size, weight: .black, design: .rounded))
-        .tracking(size * 0.06)
         .accessibilityLabel("Nova")
     }
 }

@@ -31,7 +31,6 @@ struct ProfilePinPrompt: View {
                     .textContentType(.oneTimeCode)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 34, weight: .bold, design: .monospaced))
-                    .tracking(12)
                     .padding(.vertical, 14)
                     .background(Color.novaSurface)
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))

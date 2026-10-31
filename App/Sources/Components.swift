@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 struct AsyncPoster: View {
     let urlString: String?

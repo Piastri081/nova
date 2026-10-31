@@ -149,7 +149,7 @@ struct ProfileView: View {
                     if let serverStatus {
                         Text(serverStatus)
                             .font(.caption)
-                            .foregroundStyle(serverStatus == "Saved." ? .green : .orange)
+                            .foregroundStyle(serverStatus == "Saved." ? Color.green : Color.orange)
                     }
 
                     Text(ServerConfig.baseURL.absoluteString)
