@@ -24,9 +24,9 @@ targets:
     platform: iOS
     sources:
       - path: App/Sources
-      - path: Shared
-    resources:
       - path: App/Resources
+      - path: Shared
+    resources: []
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.nova
