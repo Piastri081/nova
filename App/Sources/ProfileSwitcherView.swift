@@ -23,10 +23,11 @@ struct ProfileSwitcherView: View {
                                 VStack(spacing: 8) {
                                     ProfileAvatar(profile: profile, size: 96)
                                         .overlay(alignment: .bottomTrailing) {
-                                            if auth.selectedProfile?.id == profile.id {
+                                            if isSelected(profile) {
                                                 Image(systemName: "checkmark.circle.fill")
                                                     .font(.title3)
-                                                    .foregroundStyle(.white, .novaRed)
+                                                    .symbolRenderingMode(.palette)
+                                                    .foregroundStyle(Color.white, Color.novaRed)
                                                     .padding(4)
                                             }
                                         }
@@ -116,5 +117,9 @@ struct ProfileSwitcherView: View {
             auth.select(profile)
             dismiss()
         }
+    }
+
+    private func isSelected(_ profile: Profile) -> Bool {
+        auth.selectedProfile?.id == profile.id
     }
 }

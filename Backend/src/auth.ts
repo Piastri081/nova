@@ -250,11 +250,10 @@ async function requestCode(request: Request, env: Env): Promise<Response> {
   if (!devMode) {
     if (!configured) {
       await env.DB.prepare("DELETE FROM login_codes WHERE id = ?").bind(id).run();
+      console.error("Login delivery is not configured", identifier.channel);
       throw new HttpError(
         503,
-        identifier.channel === "email"
-          ? "Email delivery isn't configured on this server. Set RESEND_API_KEY and EMAIL_FROM."
-          : "SMS delivery isn't configured on this server. Set the TWILIO_* secrets."
+        "Sign-in codes are temporarily unavailable. Please try again later."
       );
     }
 
