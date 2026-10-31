@@ -86,6 +86,8 @@ npx wrangler d1 execute nova --file=./schema.sql --remote
 npx wrangler secret put CODE_PEPPER
 npx wrangler secret put RESEND_API_KEY
 npx wrangler secret put EMAIL_FROM
+# or use Brevo instead of Resend
+npx wrangler secret put BREVO_API_KEY
 # optional SMS
 npx wrangler secret put TWILIO_ACCOUNT_SID
 npx wrangler secret put TWILIO_AUTH_TOKEN

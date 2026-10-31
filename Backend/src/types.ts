@@ -4,6 +4,7 @@ export interface Env {
   CODE_PEPPER: string;
   DEV_RETURN_CODE?: string;
   RESEND_API_KEY?: string;
+  BREVO_API_KEY?: string;
   EMAIL_FROM?: string;
   TWILIO_ACCOUNT_SID?: string;
   TWILIO_AUTH_TOKEN?: string;

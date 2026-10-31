@@ -104,7 +104,7 @@ async function countRecentCodes(
   return row?.count ?? 0;
 }
 
-async function sendEmail(env: Env, to: string, code: string): Promise<void> {
+function emailContent(code: string) {
   const html = `
   <div style="background:#0a0a0c;padding:32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#fff">
     <div style="max-width:480px;margin:0 auto;background:#141418;border-radius:16px;padding:28px">
@@ -124,6 +124,16 @@ async function sendEmail(env: Env, to: string, code: string): Promise<void> {
     </div>
   </div>`;
 
+  return {
+    subject: `${code} is your Nova code`,
+    text: `Your Nova code is ${code}. It expires in 10 minutes. If you didn't request it, ignore this email.`,
+    html
+  };
+}
+
+async function sendEmailResend(env: Env, to: string, code: string): Promise<void> {
+  const { subject, text, html } = emailContent(code);
+
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -133,8 +143,8 @@ async function sendEmail(env: Env, to: string, code: string): Promise<void> {
     body: JSON.stringify({
       from: env.EMAIL_FROM,
       to: [to],
-      subject: `${code} is your Nova code`,
-      text: `Your Nova code is ${code}. It expires in 10 minutes. If you didn't request it, ignore this email.`,
+      subject,
+      text,
       html
     })
   });
@@ -144,6 +154,39 @@ async function sendEmail(env: Env, to: string, code: string): Promise<void> {
     console.error("Resend delivery failed", response.status, detail);
     throw new Error("Email delivery failed");
   }
+}
+
+async function sendEmailBrevo(env: Env, to: string, code: string): Promise<void> {
+  const { subject, text, html } = emailContent(code);
+
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": env.BREVO_API_KEY as string,
+      "content-type": "application/json",
+      accept: "application/json"
+    },
+    body: JSON.stringify({
+      sender: { name: "Nova", email: env.EMAIL_FROM },
+      to: [{ email: to }],
+      subject,
+      textContent: text,
+      htmlContent: html
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    console.error("Brevo delivery failed", response.status, detail);
+    throw new Error("Email delivery failed");
+  }
+}
+
+async function sendEmail(env: Env, to: string, code: string): Promise<void> {
+  if (env.BREVO_API_KEY) {
+    return sendEmailBrevo(env, to, code);
+  }
+  return sendEmailResend(env, to, code);
 }
 
 async function sendSms(env: Env, to: string, code: string): Promise<void> {
@@ -242,7 +285,7 @@ async function requestCode(request: Request, env: Env): Promise<Response> {
   const devMode = env.DEV_RETURN_CODE === "true";
   const configured =
     identifier.channel === "email"
-      ? Boolean(env.RESEND_API_KEY && env.EMAIL_FROM)
+      ? Boolean(env.EMAIL_FROM && (env.RESEND_API_KEY || env.BREVO_API_KEY))
       : Boolean(
           env.TWILIO_ACCOUNT_SID && env.TWILIO_AUTH_TOKEN && env.TWILIO_FROM
         );

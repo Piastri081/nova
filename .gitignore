@@ -9,6 +9,10 @@ xcuserdata/
 *.dSYM.zip
 .DS_Store
 
+# Local build output
+dist/
+Nova.zip
+
 # Node / Wrangler
 node_modules/
 .wrangler/

@@ -2,8 +2,9 @@
 CODE_PEPPER=replace-with-a-long-random-string
 DEV_RETURN_CODE=true
 
-# Email (Resend). Verify your sending domain in the Resend dashboard.
+# Email. Use Resend (verified domain) or Brevo (verified single sender).
 RESEND_API_KEY=
+BREVO_API_KEY=
 EMAIL_FROM=Nova <login@your-domain.example>
 
 # SMS (Twilio). TWILIO_FROM must be an E.164 number you own.

@@ -4,9 +4,9 @@ Cloudflare Worker + D1 + optional KV. It powers the hosted Nova service and prov
 
 ## Requirements
 
-- Node.js 20+
+- Node.js 22+
 - A Cloudflare account
-- Optional: Resend account for email codes
+- Optional: Resend or Brevo account for email codes
 - Optional: Twilio account for SMS codes
 
 ## 1. Install
@@ -40,14 +40,15 @@ npx wrangler d1 execute nova --file=./schema.sql --local
 
 ```bash
 npx wrangler secret put CODE_PEPPER          # 32+ random characters
-npx wrangler secret put RESEND_API_KEY       # email
+npx wrangler secret put RESEND_API_KEY       # email via Resend (domain required)
+npx wrangler secret put BREVO_API_KEY        # email via Brevo (verified sender works)
 npx wrangler secret put EMAIL_FROM           # e.g. Nova <login@your-domain.com>
 npx wrangler secret put TWILIO_ACCOUNT_SID   # SMS
 npx wrangler secret put TWILIO_AUTH_TOKEN
 npx wrangler secret put TWILIO_FROM          # E.164 number you own
 ```
 
-`CODE_PEPPER` is required and must be at least 16 characters. Email/SMS secrets are only required for the channel you use.
+`CODE_PEPPER` is required and must be at least 16 characters. Email/SMS secrets are only required for the channel you use. Set either `RESEND_API_KEY` or `BREVO_API_KEY` for email; Brevo is used when both are present.
 
 ## 5. Local development
 
@@ -72,7 +73,7 @@ A public deployment needs a few extra guardrails beyond a private instance:
 
 - Keep `DEV_RETURN_CODE=false` and never expose `.dev.vars`.
 - Set a long random `CODE_PEPPER` and rotate it only with a planned session reset.
-- Configure Resend/Twilio with spending limits and monitor delivery failures.
+- Configure Resend/Brevo/Twilio with spending limits and monitor delivery failures.
 - The API already limits code requests to 5 per identifier and 25 per IP per 15 minutes, caps login attempts, and locks profile PINs after 5 failures.
 - Put the Worker behind a custom domain and keep HTTPS only.
 - Review Cloudflare analytics for abuse spikes; add a WAF rule or Turnstile challenge if needed.
@@ -82,7 +83,8 @@ The included `docs/privacy.html` is a starting point for the hosted service.
 
 ## Email and SMS providers
 
-- **Email:** [Resend](https://resend.com). Verify your sending domain and set `EMAIL_FROM` to a sender on that domain.
+- **Email (Resend):** [Resend](https://resend.com). Verify your sending domain and set `EMAIL_FROM` to a sender on that domain.
+- **Email (Brevo):** [Brevo](https://brevo.com). Verify a single sender address and set `BREVO_API_KEY` plus `EMAIL_FROM`. A verified sender works without owning a domain, which is useful for a small launch.
 - **SMS:** [Twilio](https://twilio.com). Set `TWILIO_FROM` to an E.164 number enabled for your account. SMS delivery may require A2P registration depending on your country.
 
 If a channel is not configured and dev mode is off, the API returns `503` with a clear message instead of silently failing.
