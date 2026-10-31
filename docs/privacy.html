@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — Nova</title>
+  <meta name="description" content="How Nova handles account, profile, and playback data." />
+  <meta name="theme-color" content="#09090c" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090c'/%3E%3Ctext x='32' y='46' font-family='Arial Black,Arial' font-size='40' font-weight='900' text-anchor='middle' fill='white'%3EN%3C/text%3E%3Crect x='18' y='51' width='28' height='3' rx='1.5' fill='%23e50914'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Nova home">
+      <span class="brand-n">N</span><span class="brand-ova">OVA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#install">Install</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="legal">
+    <span class="eyebrow">Privacy</span>
+    <h1>Your data, in plain language.</h1>
+    <p class="legal-updated">Last updated: October 31, 2026</p>
+
+    <h2>What Nova stores</h2>
+    <p>
+      When you sign in, Nova stores the email address or phone number you enter, a display name,
+      your profiles (name, avatar color, kids flag, and an optional hashed PIN), your My List,
+      and your playback progress. Session tokens are stored as hashes. Login codes and PINs are
+      never stored in plain text.
+    </p>
+
+    <h2>Why we store it</h2>
+    <p>
+      This data is required to sign you in, keep separate profiles, sync your list and
+      Continue Watching across devices, and restore your session. Nova does not sell data,
+      show ads, or use your viewing history for advertising.
+    </p>
+
+    <h2>Where it is stored</h2>
+    <p>
+      The hosted Nova service runs on Cloudflare Workers and Cloudflare D1. Data is processed
+      by Cloudflare on our behalf. Email codes are delivered through Resend; SMS codes are
+      delivered through Twilio. Those providers receive the destination address/number and the
+      message content needed to deliver your code.
+    </p>
+
+    <h2>Retention</h2>
+    <p>
+      Account and profile data is kept while your account exists. Login codes expire after ten
+      minutes and are removed after use. Sessions expire after 30 days. Progress and watchlist
+      entries are kept until you remove them or delete the profile.
+    </p>
+
+    <h2>Deleting your data</h2>
+    <p>
+      You can delete a profile in the app. To delete your whole account, open
+      <strong>Profile → Delete Account</strong>. This permanently removes your account, all
+      profiles, My List entries, playback progress, sessions, and pending login codes. If you
+      cannot sign in, contact the project using the repository link in the footer and include the
+      email address or phone number you used.
+    </p>
+
+    <h2>Children</h2>
+    <p>
+      Nova is intended for users aged 13 and older. Kids profiles are a content-filtering
+      convenience, not a verified parental-consent system. Do not create an account for a child
+      under 13.
+    </p>
+
+    <h2>Security</h2>
+    <p>
+      Traffic uses HTTPS. Session tokens are random 256-bit values stored in the iOS Keychain on
+      your device and as SHA-256 hashes on the server. Profile PINs are salted and hashed, with
+      rate limiting and temporary lockout after repeated failures. No system is perfectly
+      secure; use a device passcode and keep iOS updated.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy changes, the updated date above will change. Material changes will be
+      noted on the project's release page.
+    </p>
+
+    <p class="legal-back"><a class="button ghost" href="index.html">Back to Nova</a></p>
+  </main>
+
+  <footer class="footer">
+    <div class="brand small"><span class="brand-n">N</span><span class="brand-ova">OVA</span></div>
+    <p>
+      Nova is an independent project. It is not affiliated with Netflix, does not host media,
+      and does not sell subscriptions.
+    </p>
+    <p class="footer-links">
+      <a data-repo-link href="#" rel="noopener">GitHub</a>
+      <a data-releases-link href="#" rel="noopener">Releases</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://archive.org" rel="noopener">Internet Archive</a>
+    </p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

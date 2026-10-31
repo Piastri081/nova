@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova — Public-domain cinema, beautifully presented</title>
+  <meta name="description" content="Nova is a native iOS app for public-domain and Creative Commons films from the Internet Archive. Passwordless sign-in, profiles, Continue Watching, widgets, and Liquid Glass." />
+  <meta name="theme-color" content="#09090c" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090c'/%3E%3Ctext x='32' y='46' font-family='Arial Black,Arial' font-size='40' font-weight='900' text-anchor='middle' fill='white'%3EN%3C/text%3E%3Crect x='18' y='51' width='28' height='3' rx='1.5' fill='%23e50914'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Nova home">
+      <span class="brand-n">N</span><span class="brand-ova">OVA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#backend">Backend</a>
+      <a data-releases-link href="#" rel="noopener">Releases</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="badge">v<span data-version>1.0.0</span> · Hosted for everyone · No paywall</div>
+      <h1>Public-domain cinema.<br /><span class="gradient">Beautifully presented.</span></h1>
+      <p class="lede">
+        Nova is a native iOS streaming app for classic and Creative Commons films from the
+        Internet Archive. Sign in with a code, pick a profile, and keep watching on any device.
+        No server setup, no subscription, no paywall.
+      </p>
+      <div class="actions">
+        <a class="button primary" data-ipa-link href="#" rel="noopener">
+          <span class="button-icon">↓</span> Download IPA
+        </a>
+        <a class="button ghost" data-repo-link href="#" rel="noopener">
+          View source on GitHub
+        </a>
+      </div>
+      <p class="micro" data-repo-note>
+        Replace <code>your-username/nova</code> in <code>docs/config.js</code> with your repository to activate these links.
+      </p>
+
+      <div class="device" aria-hidden="true">
+        <div class="device-screen">
+          <div class="device-top">
+            <span class="device-logo"><b>N</b>OVA</span>
+            <span class="device-avatar">C</span>
+          </div>
+          <div class="hero-card">
+            <div class="hero-shade"></div>
+            <div class="hero-copy">
+              <span class="kicker">NOVA ESSENTIALS</span>
+              <strong>Charade</strong>
+              <span class="meta">1963 · 1h 53m · ★ 7.9</span>
+              <div class="hero-buttons">
+                <span class="mini-play">▶ Play</span>
+                <span class="mini-info">More Info</span>
+              </div>
+            </div>
+          </div>
+          <div class="row-title">Continue Watching</div>
+          <div class="row">
+            <div class="thumb t1"><span>Night of the<br />Living Dead</span><i></i></div>
+            <div class="thumb t2"><span>Detour</span><i></i></div>
+            <div class="thumb t3"><span>Metropolis</span><i></i></div>
+          </div>
+          <div class="row-title">Film Noir</div>
+          <div class="row">
+            <div class="thumb t4"><span>D.O.A.</span></div>
+            <div class="thumb t5"><span>The Stranger</span></div>
+            <div class="thumb t6"><span>Kansas City<br />Confidential</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="section-head">
+        <span class="eyebrow">Everything included</span>
+        <h2>Built like a real streaming app.</h2>
+        <p>No web wrapper. No placeholder screens. Every feature below ships in 1.0.0.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon">✉︎</div>
+          <h3>Passwordless sign-in</h3>
+          <p>Six-digit codes by email (Resend) or SMS (Twilio). Codes are hashed, single-use, and expire in ten minutes.</p>
+        </article>
+        <article class="card">
+          <div class="icon">◉</div>
+          <h3>Up to five profiles</h3>
+          <p>Each profile keeps its own My List, Continue Watching, and playback position. Optional 4-digit PIN with server-side lockout.</p>
+        </article>
+        <article class="card">
+          <div class="icon">☁︎</div>
+          <h3>Hosted cloud</h3>
+          <p>Accounts, profiles, lists, and progress live in a Cloudflare backend operated for Nova. Sign in on another iPhone or iPad and everything is already there.</p>
+        </article>
+        <article class="card">
+          <div class="icon">▷</div>
+          <h3>Continue Watching</h3>
+          <p>Playback progress is saved while you watch and when you leave the player. Tap a card to resume exactly where you stopped.</p>
+        </article>
+        <article class="card">
+          <div class="icon">✦</div>
+          <h3>Liquid Glass</h3>
+          <p>Native <code>glassEffect</code> surfaces on iOS 26+, with an automatic material fallback on iOS 17–25 and when built with Xcode 16.</p>
+        </article>
+        <article class="card">
+          <div class="icon">▦</div>
+          <h3>Home &amp; Lock Screen widgets</h3>
+          <p>Continue Watching and Trending widgets in small, medium, and large sizes, plus inline, circular, and rectangular Lock Screen families.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⌕</div>
+          <h3>Search &amp; discovery</h3>
+          <p>Search by title, genre, or year. Curated rows for noir, sci-fi, horror, comedy, silent era, drama, family, and adventure.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⚖︎</div>
+          <h3>Legal by design</h3>
+          <p>Only Internet Archive public-domain and Creative Commons titles. Every detail page links back to the source and license.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="install" class="section split">
+      <div>
+        <span class="eyebrow">Install</span>
+        <h2>Download the unsigned IPA.</h2>
+        <p>
+          The GitHub Release contains <code>Nova.ipa</code>, built without a signing certificate.
+          iOS will not install it by tapping the file. Use one of these tools:
+        </p>
+        <ol class="steps">
+          <li><strong>AltStore</strong> — add the IPA to My Apps and sign with your Apple ID.</li>
+          <li><strong>Sideloadly</strong> — drag the IPA in, enter your Apple ID, and install.</li>
+          <li><strong>Xcode</strong> — open the generated project, select your team, and run on your device.</li>
+        </ol>
+        <div class="notice">
+          <strong>The public build is preconfigured.</strong>
+          Just install, enter your email or phone number, and use the 6-digit code. The hosted
+          backend is operated for Nova. If you prefer to run your own server, the same
+          <code>Backend/</code> folder deploys to your Cloudflare account.
+        </div>
+        <a class="button primary" data-ipa-link href="#" rel="noopener">
+          <span class="button-icon">↓</span> Get Nova.ipa
+        </a>
+      </div>
+      <div class="panel">
+        <div class="panel-row"><span>Platform</span><strong>iOS 17+</strong></div>
+        <div class="panel-row"><span>Built with</span><strong>SwiftUI · WidgetKit</strong></div>
+        <div class="panel-row"><span>Backend</span><strong>Hosted by Nova</strong></div>
+        <div class="panel-row"><span>Account</span><strong>Email or SMS code</strong></div>
+        <div class="panel-row"><span>Signing</span><strong>Unsigned IPA</strong></div>
+        <div class="panel-row"><span>Paywall</span><strong>None</strong></div>
+        <div class="panel-row"><span>Content</span><strong>Internet Archive</strong></div>
+      </div>
+    </section>
+
+    <section id="backend" class="section split reverse">
+      <div class="panel code-panel">
+        <p class="code-caption">Optional: run your own backend</p>
+        <pre><code>cd Backend
+npm install
+npx wrangler login
+npx wrangler d1 create nova
+npx wrangler kv namespace create CACHE
+npx wrangler d1 execute nova \
+  --file=./schema.sql --remote
+npx wrangler secret put CODE_PEPPER
+npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put EMAIL_FROM
+npx wrangler deploy</code></pre>
+      </div>
+      <div>
+        <span class="eyebrow">Hosted + open source</span>
+        <h2>No server setup required.</h2>
+        <p>
+          The public Nova build talks to a Cloudflare Worker operated for the project.
+          Accounts and profiles are stored in D1 with hashed tokens, so you never configure a
+          server. The entire backend is open source, so developers can still deploy their own copy.
+        </p>
+        <ul class="checks">
+          <li>Hashed session tokens and login codes</li>
+          <li>Per-identifier and per-IP rate limits</li>
+          <li>Profile PINs with five-attempt lockout</li>
+          <li>Kids profiles filtered server-side</li>
+          <li>Resend for email, Twilio for SMS</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="cta-card">
+        <h2>Ready to watch?</h2>
+        <p>Download the latest build and sign in with a code. No server setup required.</p>
+        <div class="actions center">
+          <a class="button primary" data-ipa-link href="#" rel="noopener">Download IPA</a>
+          <a class="button ghost" data-releases-link href="#" rel="noopener">All releases</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand small"><span class="brand-n">N</span><span class="brand-ova">OVA</span></div>
+    <p>
+      Nova is an independent project. It is not affiliated with Netflix, does not host media,
+      and does not sell subscriptions. Public-domain status varies by country — verify you are
+      allowed to stream a title in your jurisdiction.
+    </p>
+    <p class="footer-links">
+      <a data-repo-link href="#" rel="noopener">GitHub</a>
+      <a data-releases-link href="#" rel="noopener">Releases</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://archive.org" rel="noopener">Internet Archive</a>
+    </p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

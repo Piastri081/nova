@@ -1,0 +1,29 @@
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+*.xcuserstate
+*.ipa
+*.dSYM.zip
+.DS_Store
+
+# Node / Wrangler
+node_modules/
+.wrangler/
+.dev.vars
+Backend/dist/
+Backend/.mf/
+
+# Local secrets
+*.p12
+*.mobileprovision
+.env
+.env.*
+!.env.example
+
+# OS / editors
+Thumbs.db
+.vscode/
+.idea/
