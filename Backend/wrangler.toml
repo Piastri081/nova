@@ -2,6 +2,7 @@ name = "nova-api"
 main = "src/index.ts"
 compatibility_date = "2025-06-01"
 workers_dev = true
+preview_urls = false
 
 [vars]
 DEV_RETURN_CODE = "false"
@@ -9,8 +10,8 @@ DEV_RETURN_CODE = "false"
 [[d1_databases]]
 binding = "DB"
 database_name = "nova"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "0cd64ebe-f8cd-4d2f-a4fd-1b027574c18b"
 
 [[kv_namespaces]]
 binding = "CACHE"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "9b2665ca37bb4726b2e4a7f48a27b07b"
